@@ -1,0 +1,50 @@
+<div class="main-wrapper">
+  <!-- Sidebar à gauche -->
+
+  <aside class="sidebar">
+    <ul>
+      <li>
+        <a routerLink="/dashboard">
+          <i class="fas fa-home"></i> Dashboard
+        </a>
+      </li>
+
+      <ng-container *ngIf="role === 'administrateur'">
+        <li><a routerLink="/admin/users"><i class="fas fa-users-cog"></i> Utilisateurs</a></li>
+        <li><a routerLink="/admin/classrooms"><i class="fas fa-chalkboard"></i> Classes</a></li>
+        <li><a routerLink="/admin/cours"><i class="fas fa-book"></i> Cours</a></li>
+        <li><a routerLink="/admin/eleves"><i class="fas fa-user-graduate"></i> Élèves</a></li>
+        <li><a routerLink="/admin/enseignants"><i class="fas fa-user-tie"></i> Enseignants</a></li>
+        <li><a routerLink="/admin/bulletins"><i class="fas fa-file-alt"></i> Bulletins</a></li>
+      </ng-container>
+
+      <ng-container *ngIf="role === 'enseignant'">
+        <li><a routerLink="/enseignant/dashboard"><i class="fas fa-tachometer-alt"></i> Accueil Enseignant</a></li>
+        <li><a routerLink="/enseignant/notes"><i class="fas fa-pen"></i> Notes</a></li>
+      </ng-container>
+
+      <ng-container *ngIf="role === 'eleve_parent'">
+        <li><a routerLink="/eleve-parent/bulletins"><i class="fas fa-clipboard-list"></i> Mes bulletins</a></li>
+      </ng-container>
+    </ul>
+  </aside>
+
+  <!-- Contenu principal à droite -->
+  <div class="main-content">
+    <!-- Navbar au-dessus du contenu -->
+    <nav class="navbar">
+      <div class="navbar-left">
+
+      </div>
+      <div class="navbar-right">
+        <span>Bienvenue, {{ userName }}</span>
+        <button (click)="logout()">Déconnexion</button>
+      </div>
+    </nav>
+
+    <!-- Contenu dynamique -->
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>

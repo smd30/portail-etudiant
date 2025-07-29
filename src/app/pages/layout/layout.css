@@ -1,0 +1,96 @@
+.main-wrapper {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR À GAUCHE */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ✅ centre verticalement */
+  align-items: flex-start; /* ✅ aligné à gauche */
+  height: 100vh; /* s'assurer qu'il prend toute la hauteur */
+  width: 220px;
+  background-color: #051a2e;
+  color: white;
+  font-size: calc(10px + 2vmin);
+  padding: 1rem;
+  overflow-y: auto;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 1.4rem;
+
+      a {
+        color: white;
+        text-decoration: none;
+        i {
+          margin-right: 0.5rem;
+          font-size: 1.3rem;
+          width: 20px;
+          text-align: center;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+/* CONTENU PRINCIPAL À DROITE */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* NAVBAR EN HAUT DU CONTENU */
+.navbar {
+  height: 60px;
+  background: #ffffff;
+  color: #0e0909;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* ✅ Ombre portée */
+}
+
+/* Partie droite de la navbar */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* ✅ Espacement entre le nom et le bouton */
+}
+
+/* BOUTON DE DÉCONNEXION */
+.navbar-right button {
+  padding: 0.4rem 1rem;
+  background-color: #051a2e; /* ✅ Bleu nuit */
+  color: #fff;
+  border: none;
+  border-radius: 8px; /* ✅ Coins arrondis */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1a252f; /* Variante plus foncée au survol */
+  }
+}
+
+
+/* CONTENU DYNAMIQUE EN DESSOUS DE LA NAVBAR */
+.content {
+  flex-grow: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}

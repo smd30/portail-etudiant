@@ -1,0 +1,18 @@
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1 1 300px;
+}
+.card.blue {
+  background-color: #cce5ff;
+  color: #004085;
+}
+.card.green {
+  background-color: #d4edda;
+  color: #155724;
+}

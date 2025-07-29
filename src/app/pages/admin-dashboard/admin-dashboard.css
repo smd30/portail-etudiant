@@ -1,0 +1,22 @@
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1 1 250px;
+}
+.card.blue {
+  background-color: #cce5ff;
+  color: #004085;
+}
+.card.green {
+  background-color: #d4edda;
+  color: #155724;
+}
+.card.purple {
+  background-color: #e2d6f9;
+  color: #4b0082;
+}

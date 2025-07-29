@@ -1,0 +1,9 @@
+<div class="login-container">
+  <h2>Connexion</h2>
+  <form (submit)="login(); $event.preventDefault()">
+    <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+    <input type="password" placeholder="Mot de passe" [(ngModel)]="password" name="password" required />
+    <button type="submit">Se connecter</button>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>
