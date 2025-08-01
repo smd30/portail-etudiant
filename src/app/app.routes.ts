@@ -7,6 +7,8 @@ import { EnseignantDashboard } from './pages/enseignant-dashboard/enseignant-das
 import { EleveDashboard } from './pages/eleve-dashboard/eleve-dashboard';
 import { authGuard } from './guards/auth-guard';
 import {LayoutComponent} from './pages/layout/layout';
+import { UsersComponent } from './admin/users/users';
+import { Classrooms } from './admin/classrooms/classrooms';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,9 +24,12 @@ export const routes: Routes = [
       { path: 'admin-dashboard', component: AdminDashboard },
       { path: 'enseignant-dashboard', component: EnseignantDashboard },
       { path: 'eleve-dashboard', component: EleveDashboard },
+      { path: 'users', component: UsersComponent},
+      { path: 'classes', component: Classrooms},
     ],
   },
 
   { path: '**', redirectTo: '' },
+
 ];
 

@@ -10,4 +10,12 @@ export interface User {
   sexe?: string;
   justificatif_path?: string;
   role: 'administrateur' | 'enseignant' | 'eleve_parent';
+  created_at?: string;
+  updated_at?: string;
+}
+
+
+export interface Auth{
+  token?: string;
+  user : User;
 }

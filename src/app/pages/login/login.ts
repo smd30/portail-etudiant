@@ -21,11 +21,13 @@ export class Login {
 
   login(): void {
     this.authService.login(this.email, this.password).subscribe({
-      next: (user) => {
-        localStorage.setItem('role', user.role); // 👈 assure-toi que le rôle est bien enregistré
+      next: (auth) => {
+        console.log("-------------------")
+        console.log(auth.user.role)
         this.router.navigate(['/dashboard']);
       },
-      error: () => {
+      error: (error) => {
+        console.log(error);
         this.errorMessage = 'Email ou mot de passe invalide.';
       },
     });

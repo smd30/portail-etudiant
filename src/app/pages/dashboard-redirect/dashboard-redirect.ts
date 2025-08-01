@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardRedirect {
   constructor(private router: Router) {
+
     const role = localStorage.getItem('role');
     console.log('Role trouvé :', role); // 👀
 

@@ -1,8 +1,9 @@
 // src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Auth, User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -13,20 +14,25 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<{ token: string, role: string, name: string }>(this.apiUrl, { email, password }).pipe(
+
+    return this.http.post<Auth>(this.apiUrl, { email, password }).pipe(
       tap((res) => {
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('role', res.role);      // <-- Important
-        localStorage.setItem('user_name', res.name); // <-- Pour afficher sur le dashboard
+        // console.log(res.user.role)
+        localStorage.setItem('token', res.token!);
+        localStorage.setItem('role', res.user.role);     
+        localStorage.setItem('user_name', res.user.nom); 
       })
     );
   }
 
+
+
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('token'); 
   }
 
   logout(): void {
     localStorage.clear();
   }
+  
 }
