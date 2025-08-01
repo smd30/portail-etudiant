@@ -9,7 +9,7 @@ import { authGuard } from './guards/auth-guard';
 import {LayoutComponent} from './pages/layout/layout';
 import { UsersComponent } from './admin/users/users';
 import { Classrooms } from './admin/classrooms/classrooms';
-
+import { CoursComponent } from './admin/cours/cours';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
@@ -26,6 +26,7 @@ export const routes: Routes = [
       { path: 'eleve-dashboard', component: EleveDashboard },
       { path: 'users', component: UsersComponent},
       { path: 'classes', component: Classrooms},
+      { path: 'cours', component: CoursComponent},
     ],
   },
 

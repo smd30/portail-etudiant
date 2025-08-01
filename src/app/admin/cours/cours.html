@@ -1,1 +1,101 @@
-<p>cours works!</p>
+<!-- src/app/pages/admin/cours/cours.html -->
+<div class="content">
+    <div class="container-fluid">
+        
+        <div class="card mb-4 p-3">
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>Liste des cours</h4>
+                        <span class="ml-1">Gestion des cours</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <button class="btn btn-primary" (click)="openAddModal()">+ Ajouter un cours</button>
+                </div>
+            </div>
+        </div>
+  
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  
+        <div class="card">
+            <div class="card-header"><h4 class="card-title">Liste des cours</h4></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr class="table-active">
+                                <th>ID</th>
+                                <th>Libellé</th>
+                                <th>Crédit</th>
+                                <th>Volume</th>
+                                <th>Semestre</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="isLoading">
+                                <td colspan="6" class="text-center">Chargement en cours...</td>
+                            </tr>
+                            <tr *ngFor="let cour of filteredCours">
+                                <td>{{ cour.id }}</td>
+                                <td>{{ cour.libelle }}</td>
+                                <td>{{ cour.credit }}</td>
+                                <td>{{ cour.volume }}</td>
+                                <td>{{ cour.semestre }}</td>
+                                <td class="text-center">
+                                    <div class="d-grid g-4 d-md-flex justify-content-md-end">
+                                        <button class="btn btn-sm btn-warning text-white" (click)="openEditModal(cour)">Modifier</button>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <button class="btn btn-sm btn-danger" (click)="openDeleteModal(cour)">Supprimer</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<!-- Modal pour ajouter/modifier un cours -->
+<app-modal [isOpen]="isModalOpen" (close)="isModalOpen = false">
+    <h5 class="modal-title">{{ selectedCour ? 'Modifier' : 'Ajouter' }} un cours</h5>
+    
+    <form (ngSubmit)="submitForm()">
+        <div class="modal-body row g-3">
+            <div class="col-md-12">
+                <label class="form-label">Libellé</label>
+                <input type="text" name="libelle" [(ngModel)]="formData.libelle" class="form-control" required>
+            </div>
+            <div class="col-md-6 mt-3">
+                <label class="form-label">Crédit</label>
+                <input type="number" name="credit" [(ngModel)]="formData.credit" class="form-control" step="0.01" required>
+            </div>
+            <div class="col-md-6 mt-3">
+                <label class="form-label">Volume</label>
+                <input type="number" name="volume" [(ngModel)]="formData.volume" class="form-control" required>
+            </div>
+            <div class="col-md-12 mt-3">
+                <label class="form-label">Semestre</label>
+                <input type="text" name="semestre" [(ngModel)]="formData.semestre" class="form-control">
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="isModalOpen = false">Annuler</button>
+            <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+                {{ isLoading ? 'Enregistrement...' : 'Enregistrer' }}
+            </button>
+        </div>
+    </form>
+</app-modal>
+  
+<!-- Modal de confirmation de suppression -->
+<app-confirm-modal 
+    [isOpen]="isDeleteModalOpen" 
+    (confirm)="deleteCour()" 
+    (cancel)="isDeleteModalOpen = false">
+    <p>Êtes-vous sûr de vouloir supprimer ce cours ?</p>
+</app-confirm-modal>

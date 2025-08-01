@@ -2,11 +2,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Cour} from '../models/cour';
+import { Cour } from '../models/cour';
 
-
-
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root' // Ceci devrait suffire pour l'injection
+})
 export class CourService {
   private apiUrl = 'http://localhost:8000/api/cours';
 
