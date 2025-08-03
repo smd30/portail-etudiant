@@ -8,4 +8,4 @@ bootstrapApplication(App, {
     provideHttpClient(),
     ...appConfig.providers // ✅ fusionne les providers si `appConfig` en a
   ]
-}).catch((err) => console.error(err));
+}).catch((err) => console.error());

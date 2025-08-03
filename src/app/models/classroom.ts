@@ -4,6 +4,6 @@ import { Cour } from './cour';
 export interface Classroom {
   id: number;
   libelle: string;
-  description: string;
+  description?: string;
   cours?: Cour[];
 }

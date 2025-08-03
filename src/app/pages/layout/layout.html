@@ -108,12 +108,12 @@
     <div class="quixnav">
       <div class="quixnav-scroll">
           <ul class="metismenu" id="menu">
+            <li>
+              <a [routerLink]="dashboardRoute">
+                <i class="icon icon-app-store"></i>Dashboard
+              </a>
+            </li>
 
-              <li>
-                  <a href="">
-                      <i class="icon icon-app-store"></i>Dashboard
-                  </a>
-              </li>
 
               <ng-container *ngIf="role === 'administrateur'">
 
@@ -126,18 +126,18 @@
                 </li>
                 <li>
                     <a routerLink="/cours">
-                    <i class="icon icon-globe-2"></i>Cours</a> 
+                    <i class="icon icon-globe-2"></i>Cours</a>
                 </li>
                 <li>
                     <a routerLink="/admin/eleves">
                     <i class="icon icon-single-04"></i>Eleves</a>
                 </li>
                 <li>
-                    <a routerLink="/admin/enseignants">
-                    <i class="icon icon-user"></i>Enseignants</a>
+                  <a routerLink="/enseignants">
+                    <i class="icon icon-single-04"></i>Enseignants</a>
                 </li>
                 <li>
-                    <a routerLink="/admin/bulletins"> 
+                    <a routerLink="/admin/bulletins">
                     <i class="icon icon-layout-25"></i>Bulletins
                     </a>
                 </li>

@@ -17,11 +17,14 @@ export class AuthService {
 
     return this.http.post<Auth>(this.apiUrl, { email, password }).pipe(
       tap((res) => {
-        // console.log(res.user.role)
+        console.log('Réponse login complète :', res);
+
         localStorage.setItem('token', res.token!);
-        localStorage.setItem('role', res.user.role);     
-        localStorage.setItem('user_name', res.user.nom); 
+        localStorage.setItem('role', res.user.role);
+        localStorage.setItem('user_name', res.user.nom);
       })
+
+
     );
   }
 
@@ -34,5 +37,5 @@ export class AuthService {
   logout(): void {
     localStorage.clear();
   }
-  
+
 }

@@ -803,7 +803,7 @@ var mobile = (function () {
       var div = doc.createElement('div');
       div.innerHTML = html;
       if (!div.hasChildNodes() || div.childNodes.length > 1) {
-        console.error('HTML does not have a single root node', html);
+        console.error(html);
         throw new Error('HTML must have a single root node');
       }
       return fromDom(div.childNodes[0]);
@@ -1587,10 +1587,7 @@ var mobile = (function () {
     };
 
     var nu$3 = function (path, getErrorInfo) {
-      return Result.error([{
-          path: path,
-          getErrorInfo: getErrorInfo
-        }]);
+      return Result.error();
     };
     var missingStrict = function (path, key, obj) {
       return nu$3(path, function () {
@@ -1857,10 +1854,7 @@ var mobile = (function () {
     };
     var extract = function (label, prop, strength, obj) {
       return prop.extract([label], strength, obj).fold(function (errs) {
-        return Result.error({
-          input: obj,
-          errors: errs
-        });
+        return Result.error();
       }, Result.value);
     };
     var asStruct = function (label, prop, obj) {
@@ -1890,7 +1884,7 @@ var mobile = (function () {
     var typedValue = function (validator, expectedType) {
       return value$2(function (a) {
         var actualType = typeof a;
-        return validator(a) ? Result.value(a) : Result.error('Expected type: ' + expectedType + ' but got: ' + actualType);
+        return validator(a) ? Result.value(a) : Result.error();
       });
     };
     var functionProcessor = typedValue(isFunction, 'function');
@@ -1906,7 +1900,7 @@ var mobile = (function () {
     };
     var forbid = function (key, message) {
       return field(key, key, asOption(), value$2(function (v) {
-        return Result.error('The field: ' + key + ' is forbidden. ' + message);
+        return Result.error();
       }));
     };
     var strictObjOf = function (key, objSchema) {
@@ -2392,7 +2386,7 @@ var mobile = (function () {
       if (isString(value$$1) || isBoolean(value$$1) || isNumber(value$$1)) {
         dom.setAttribute(key, value$$1 + '');
       } else {
-        console.error('Invalid call to Attr.set. Key ', key, ':: Value ', value$$1, ':: Element ', dom);
+        console.error(key, ':: Value ', value$$1, ':: Element ', dom);
         throw new Error('Attribute value was not simple');
       }
     };
@@ -3094,7 +3088,7 @@ var mobile = (function () {
 
     var internalSet = function (dom, property, value$$1) {
       if (!isString(value$$1)) {
-        console.error('Invalid call to CSS.set. Property ', property, ':: Value ', value$$1, ':: Element ', dom);
+        console.error(property, ':: Value ', value$$1, ':: Element ', dom);
         throw new Error('CSS value must be a string: ' + value$$1);
       }
       if (isSupported(dom)) {
@@ -3394,7 +3388,7 @@ var mobile = (function () {
     var getByIndex = function (component, hConfig, hState, index) {
       var items = descendants$1(component.element(), '.' + hConfig.itemClass());
       return Option.from(items[index]).fold(function () {
-        return Result.error('No element found with index ' + index);
+        return Result.error();
       }, component.getSystem().getByDom);
     };
     var getFirst = function (component, hConfig, hState) {
@@ -4182,7 +4176,7 @@ var mobile = (function () {
         },
         setGridSize: function (component, keyConfig, keyState, numRows, numColumns) {
           if (!hasKey$1(keyState, 'setGridSize')) {
-            console.error('Layout does not support setGridSize');
+            console.error();
           } else {
             keyState.setGridSize(numRows, numColumns);
           }
@@ -7127,9 +7121,7 @@ var mobile = (function () {
     };
     var onlyOne = function (chain, aspect) {
       if (chain.length > 1) {
-        return Result.error('Multiple behaviours have tried to change DOM "' + aspect + '". The guilty behaviours are: ' + Json.stringify(map$1(chain, function (b) {
-          return b.name();
-        })) + '. At this stage, this ' + 'is not supported. Future releases might provide strategies for resolving this.');
+        return Result.error();
       } else if (chain.length === 0) {
         return Result.value({});
       } else {
@@ -7141,9 +7133,7 @@ var mobile = (function () {
       }
     };
     var duplicate = function (aspect, k, obj, behaviours) {
-      return Result.error('Mulitple behaviours have tried to change the _' + k + '_ "' + aspect + '"' + '. The guilty behaviours are: ' + Json.stringify(bind(behaviours, function (b) {
-        return b.modification().getOr({})[k] !== undefined ? [b.name()] : [];
-      }), null, 2) + '. This is not currently supported.');
+      return Result.error();
     };
     var objSafeMerge = function (chain, aspect) {
       var y = foldl(chain, function (acc, c) {
@@ -7193,7 +7183,7 @@ var mobile = (function () {
       });
       var modifications = mapToArray(usedAspect, function (values$$1, aspect) {
         return readOptFrom$1(mergeTypes, aspect).fold(function () {
-          return Result.error('Unknown field type: ' + aspect);
+          return Result.error();
         }, function (merger) {
           return merger(values$$1, aspect);
         });
@@ -7226,7 +7216,7 @@ var mobile = (function () {
         });
         return Result.value(sorted);
       } catch (err) {
-        return Result.error([err]);
+        return Result.error();
       }
     };
 
@@ -7289,9 +7279,7 @@ var mobile = (function () {
       };
     };
     var missingOrderError = function (eventName, tuples) {
-      return Result.error(['The event (' + eventName + ') has more than one behaviour that listens to it.\nWhen this occurs, you must ' + 'specify an event ordering for the behaviours in your spec (e.g. [ "listing", "toggling" ]).\nThe behaviours that ' + 'can trigger it are: ' + Json.stringify(map$1(tuples, function (c) {
-          return c.name();
-        }), null, 2)]);
+      return Result.error();
     };
     var fuse$1 = function (tuples, eventOrder, eventName) {
       var order = eventOrder[eventName];
@@ -10238,7 +10226,7 @@ var mobile = (function () {
     var factory$4 = function (detail, components$$1, spec, _externals) {
       var setGroups = function (toolbar$$1, groups) {
         getGroupContainer(toolbar$$1).fold(function () {
-          console.error('Toolbar was defined to not be a shell, but no groups container was specified in components');
+          console.error();
           throw new Error('Toolbar was defined to not be a shell, but no groups container was specified in components');
         }, function (container) {
           Replacing.set(container, groups);
@@ -11158,7 +11146,7 @@ var mobile = (function () {
       };
       var getByUid = function (uid) {
         return registry.getById(uid).fold(function () {
-          return Result.error(new Error('Could not find component with uid: "' + uid + '" in system.'));
+          return Result.error();
         }, Result.value);
       };
       var getByDom = function (elem) {

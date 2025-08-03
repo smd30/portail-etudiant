@@ -1,5 +1,5 @@
 // src/app/pages/dashboard-redirect/dashboard-redirect.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
   standalone: true,
   template: '',
 })
-export class DashboardRedirect {
-  constructor(private router: Router) {
+export class DashboardRedirect implements OnInit {
+  constructor(private router: Router) {}
 
+  ngOnInit(): void {
     const role = localStorage.getItem('role');
-    console.log('Role trouvé :', role); // 👀
+    console.log('Role trouvé :', role);
 
     switch (role) {
       case 'administrateur':
@@ -27,6 +28,5 @@ export class DashboardRedirect {
         this.router.navigate(['/login']);
         break;
     }
-
   }
 }

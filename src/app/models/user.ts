@@ -4,14 +4,13 @@ export interface User {
   prenom: string;
   email: string;
   telephone?: string;
-  addresse?: string;
-  date_naissane?: string;
+  adresse?: string;
+  date_naissance?: string;
   lieu?: string;
   sexe?: string;
   justificatif_path?: string;
   role: 'administrateur' | 'enseignant' | 'eleve_parent';
-  created_at?: string;
-  updated_at?: string;
+
 }
 
 

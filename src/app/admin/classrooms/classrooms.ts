@@ -48,7 +48,7 @@ export class ClassroomsComponent implements OnInit {
   this.classroomService.getClasses().subscribe({
     next: (classrooms: Classroom[]) => {
       // Pour chaque classe, charger les cours associés
-      const requests = classrooms.map(classroom => 
+      const requests = classrooms.map(classroom =>
         this.classroomService.getCoursByClasse(classroom.id).toPromise()
           .then(cours => {
             classroom.cours = cours;
@@ -64,7 +64,7 @@ export class ClassroomsComponent implements OnInit {
     error: (err: any) => {
       this.errorMessage = 'Erreur lors du chargement des classes';
       this.isLoading = false;
-      console.error(err);
+      console.error();
     }
   });
 }
@@ -75,7 +75,7 @@ export class ClassroomsComponent implements OnInit {
         this.cours = cours;
       },
       error: (err: any) => {
-        console.error('Erreur lors du chargement des cours', err);
+        console.error(err);
       }
     });
   }
@@ -121,7 +121,7 @@ createClassroom(): void {
     error: (err: any) => {
       this.errorMessage = 'Erreur lors de la création de la classe';
       this.isLoading = false;
-      console.error(err);
+      console.error();
     }
   });
 }
@@ -140,7 +140,7 @@ updateClassroom(): void {
     error: (err: any) => {
       this.errorMessage = 'Erreur lors de la mise à jour de la classe';
       this.isLoading = false;
-      console.error(err);
+      console.error();
     }
   });
 }
@@ -149,7 +149,7 @@ updateClassroomCours(classroomId: number): void {
   this.classroomService.getCoursByClasse(classroomId).subscribe({
     next: (currentCours: any[]) => {
       const currentIds = currentCours.map(c => c.id);
-      
+
       // Cours à ajouter
       const toAdd = this.selectedCours.filter(id => !currentIds.includes(id));
       // Cours à supprimer
@@ -177,12 +177,12 @@ updateClassroomCours(classroomId: number): void {
         // Recharger les classes pour afficher les changements
         this.loadClassrooms();
       }).catch(error => {
-        console.error('Erreur lors de la mise à jour des cours', error);
+        console.error(error);
         this.errorMessage = 'Erreur lors de la mise à jour des cours associés';
       });
     },
     error: (err) => {
-      console.error('Erreur lors de la récupération des cours actuels', err);
+      console.error(err);
       this.errorMessage = 'Erreur lors de la récupération des cours associés';
     }
   });
@@ -201,7 +201,7 @@ updateClassroomCours(classroomId: number): void {
       error: (err: any) => {
         this.errorMessage = 'Erreur lors de la suppression de la classe';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }

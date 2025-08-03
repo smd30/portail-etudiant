@@ -6029,7 +6029,7 @@ var modern = (function () {
       var div = doc.createElement('div');
       div.innerHTML = html;
       if (!div.hasChildNodes() || div.childNodes.length > 1) {
-        console.error('HTML does not have a single root node', html);
+        console.error(html);
         throw new Error('HTML must have a single root node');
       }
       return fromDom(div.childNodes[0]);

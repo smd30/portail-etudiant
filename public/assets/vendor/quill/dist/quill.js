@@ -178,7 +178,7 @@ function create(input, value) {
         throw new ParchmentError("Unable to create " + input + " blot");
     }
     var BlotClass = match;
-    var node = 
+    var node =
     // @ts-ignore
     input instanceof Node || input['nodeType'] === Node.TEXT_NODE ? input : BlotClass.create(value);
     return new BlotClass(node, value);
@@ -1041,7 +1041,7 @@ var Quill = function () {
     key: 'import',
     value: function _import(name) {
       if (this.imports[name] == null) {
-        debug.error('Cannot import ' + name + '. Are you sure it was registered?');
+        debug.error();
       }
       return this.imports[name];
     }
@@ -1086,7 +1086,7 @@ var Quill = function () {
     this.options = expandConfig(container, options);
     this.container = this.options.container;
     if (this.container == null) {
-      return debug.error('Invalid Quill container', container);
+      return debug.error(container);
     }
     if (this.options.debug) {
       Quill.debug(this.options.debug);
@@ -1572,7 +1572,7 @@ function expandConfig(container, userConfig) {
   var moduleConfig = moduleNames.reduce(function (config, name) {
     var moduleClass = Quill.import('modules/' + name);
     if (moduleClass == null) {
-      debug.error('Cannot load ' + name + ' module. Are you sure you registered it?');
+      debug.error();
     } else {
       config[name] = moduleClass.DEFAULTS || {};
     }
@@ -9308,7 +9308,7 @@ var Toolbar = function (_Module) {
     if (!(_this.container instanceof HTMLElement)) {
       var _ret;
 
-      return _ret = debug.error('Container required for toolbar', _this.options), _possibleConstructorReturn(_this, _ret);
+      return _ret = debug.error(_this.options), _possibleConstructorReturn(_this, _ret);
     }
     _this.container.classList.add('ql-toolbar');
     _this.controls = [];

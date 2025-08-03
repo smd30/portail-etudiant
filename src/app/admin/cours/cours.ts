@@ -49,7 +49,7 @@ export class CoursComponent implements OnInit {
       error: (err: any) => { // Ajout du type
         this.errorMessage = 'Erreur lors du chargement des cours';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }
@@ -96,7 +96,7 @@ export class CoursComponent implements OnInit {
       error: (err: any) => { // Ajout du type
         this.errorMessage = 'Erreur lors de la création du cours';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }
@@ -118,7 +118,7 @@ export class CoursComponent implements OnInit {
       error: (err: any) => { // Ajout du type
         this.errorMessage = 'Erreur lors de la mise à jour du cours';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }
@@ -137,7 +137,7 @@ export class CoursComponent implements OnInit {
       error: (err: any) => { // Ajout du type
         this.errorMessage = 'Erreur lors de la suppression du cours';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }

@@ -36,7 +36,7 @@
       } else if(options.woeid !== '') {
         weatherUrl += 'select * from weather.forecast where woeid=' + options.woeid + ' and u="' + options.unit + '"';
       } else {
-        options.error('Could not retrieve weather due to an invalid location.');
+        options.error();
         return false;
       }
 
@@ -112,7 +112,7 @@
 
             options.success(weather);
           } else {
-            options.error('There was a problem retrieving the latest weather information.');
+            options.error();
           }
         }
       );

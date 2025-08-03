@@ -2,7 +2,7 @@
 
 <div class="content">
     <div class="container-fluid">
-        
+
         <div class="card mb-4 p-3">
 
             <div class="row page-titles mx-0 ">
@@ -13,7 +13,7 @@
                         <span class="ml-1">Gestion des utilisateurs</span>
                     </div>
                 </div>
-        
+
                 <div class="col-sm-4 p-md-0">
                     <select [(ngModel)]="roleFilter" (change)="applyFilter()" class="form-control">
                         <option value="">-- Filtrer par rôle --</option>
@@ -22,7 +22,7 @@
                         <option value="eleve_parent">Élève/Parent</option>
                     </select>
                 </div>
-        
+
                 <div class="col-sm-4 p-md-0 d-flex justify-content-sm-end">
                     <div class="bnt">
                         <button class="btn btn-primary" (click)="openAddModal()">+ Ajouter</button>
@@ -32,9 +32,9 @@
             </div>
 
         </div>
-  
+
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-  
+
       <div class="card">
         <div class="card-header"><h4 class="card-title">Liste des utilisateurs</h4></div>
         <div class="card-body">
@@ -73,11 +73,11 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Modal pour ajouter/modifier un utilisateur -->
   <app-modal [isOpen]="isModalOpen" (close)="isModalOpen = false">
     <h5 class="modal-title">Utilisateur</h5>
-    
+
     <form (ngSubmit)="submitForm()">
       <div class="modal-body row g-3">
         <div class="col-md-6">
@@ -97,8 +97,8 @@
           <input type="text" name="telephone" [(ngModel)]="formData.telephone" class="form-control">
         </div>
         <div class="col-md-6 mt-3">
-          <label class="form-label">Adresse</label>
-          <input type="text" name="addresse" [(ngModel)]="formData.addresse" class="form-control">
+          <label class="form-label">adresse</label>
+          <input type="text" name="adresse" [(ngModel)]="formData.adresse" class="form-control">
         </div>
         <div class="col-md-6 mt-3">
           <div class="form-group">
@@ -120,17 +120,17 @@
             </select>
           </div>
         </div>
-        
+
         <div class="col-md-6 mt-3" *ngIf="toggleEleveFields()">
           <label class="form-label">Date de naissance</label>
-          <input type="date" name="date_naissane" [(ngModel)]="formData.date_naissane" class="form-control">
+          <input type="date" name="date_naissane" [(ngModel)]="formData.date_naissance" class="form-control">
         </div>
         <div class="col-md-6 mt-3" *ngIf="toggleEleveFields()">
           <label class="form-label">Lieu de naissance</label>
           <input type="text" name="lieu" [(ngModel)]="formData.lieu" class="form-control">
         </div>
       </div>
-      
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="isModalOpen = false">Annuler</button>
         <button type="submit" class="btn btn-primary" [disabled]="isLoading">
@@ -139,11 +139,11 @@
       </div>
     </form>
   </app-modal>
-  
+
   <!-- Modal de confirmation de suppression -->
-  <app-confirm-modal 
-    [isOpen]="isDeleteModalOpen" 
-    (confirm)="deleteUser()" 
+  <app-confirm-modal
+    [isOpen]="isDeleteModalOpen"
+    (confirm)="deleteUser()"
     (cancel)="isDeleteModalOpen = false">
     <p>Supprimer cet utilisateur ?</p>
   </app-confirm-modal>

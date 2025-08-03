@@ -20,6 +20,7 @@ export class Login {
   constructor(private authService: AuthService, private router: Router) {}
 
   login(): void {
+
     this.authService.login(this.email, this.password).subscribe({
       next: (auth) => {
         console.log("-------------------")

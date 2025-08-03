@@ -535,7 +535,7 @@ Toastr
 
         ),
         $("#toastr-danger-top-right").on("click", function () {
-                toastr.error("This Is error Message", "Top Right", {
+                toastr.error("Top Right", {
                     positionClass: "toast-top-right",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -557,7 +557,7 @@ Toastr
 
         ),
         $("#toastr-danger-bottom-right").on("click", function () {
-                toastr.error("This Is error Message", "Bottom Right", {
+                toastr.error("Bottom Right", {
                     positionClass: "toast-bottom-right",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -579,7 +579,7 @@ Toastr
 
         ),
         $("#toastr-danger-bottom-left").on("click", function () {
-                toastr.error("This Is error Message", "Bottom Left", {
+                toastr.error("Bottom Left", {
                     positionClass: "toast-bottom-left",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -601,7 +601,7 @@ Toastr
 
         ),
         $("#toastr-danger-top-left").on("click", function () {
-                toastr.error("This Is error Message", "Top Left", {
+                toastr.error("Top Left", {
                     positionClass: "toast-top-left",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -623,7 +623,7 @@ Toastr
 
         ),
         $("#toastr-danger-top-full-width").on("click", function () {
-                toastr.error("This Is error Message", "Top Full Width", {
+                toastr.error("Top Full Width", {
                     positionClass: "toast-top-full-width",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -645,7 +645,7 @@ Toastr
 
         ),
         $("#toastr-danger-bottom-full-width").on("click", function () {
-                toastr.error("This Is error Message", "Bottom Full Width", {
+                toastr.error("Bottom Full Width", {
                     positionClass: "toast-bottom-full-width",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -667,7 +667,7 @@ Toastr
 
         ),
         $("#toastr-danger-top-center").on("click", function () {
-                toastr.error("This Is error Message", "Top Center", {
+                toastr.error("Top Center", {
                     positionClass: "toast-top-center",
                     timeOut: 5e3,
                     closeButton: !0,
@@ -689,7 +689,7 @@ Toastr
 
         ),
         $("#toastr-danger-bottom-center").on("click", function () {
-            toastr.error("This Is error Message", "Bottom Center", {
+            toastr.error("Bottom Center", {
                 positionClass: "toast-bottom-center",
                 timeOut: 5e3,
                 closeButton: !0,

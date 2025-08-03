@@ -30,10 +30,10 @@ export class UsersComponent implements OnInit {
     prenom: '',
     email: '',
     telephone: '',
-    addresse: '',
+    adresse: '',
     sexe: '',
     role: 'administrateur',
-    date_naissane: '',
+    date_naissance: '',
     lieu: ''
   };
 
@@ -54,7 +54,7 @@ export class UsersComponent implements OnInit {
       error: (err) => {
         this.errorMessage = 'Erreur lors du chargement des utilisateurs';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }
@@ -69,10 +69,10 @@ export class UsersComponent implements OnInit {
       prenom: '',
       email: '',
       telephone: '',
-      addresse: '',
+      adresse: '',
       sexe: '',
       role: 'administrateur',
-      date_naissane: '',
+      date_naissance: '',
       lieu: ''
     };
     this.selectedUser = null;
@@ -110,7 +110,7 @@ export class UsersComponent implements OnInit {
       error: (err) => {
         this.errorMessage = 'Erreur lors de la création';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }
@@ -132,7 +132,7 @@ export class UsersComponent implements OnInit {
       error: (err) => {
         this.errorMessage = 'Erreur lors de la mise à jour';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }
@@ -151,7 +151,7 @@ export class UsersComponent implements OnInit {
       error: (err) => {
         this.errorMessage = 'Erreur lors de la suppression';
         this.isLoading = false;
-        console.error(err);
+        console.error();
       }
     });
   }
