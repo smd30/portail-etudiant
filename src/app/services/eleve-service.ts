@@ -1,38 +1,36 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Eleve } from '../models/eleve';
 import { Observable } from 'rxjs';
-import {Eleve} from '../models/eleve';
-
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class EleveService {
-
-  private apiUrl = 'http://localhost:8000/api/eleves';
+  private apiUrl = 'http://localhost:8000/api/eleves'; // Adapter selon ton backend
 
   constructor(private http: HttpClient) {}
 
-  getEleves(): Observable<Eleve[]> {
+  getAll(): Observable<Eleve[]> {
     return this.http.get<Eleve[]>(this.apiUrl);
   }
 
-  getEleve(id: number): Observable<Eleve> {
+  getById(id: number): Observable<Eleve> {
     return this.http.get<Eleve>(`${this.apiUrl}/${id}`);
   }
 
-  createEleve(eleve: Partial<Eleve>): Observable<Eleve> {
-    return this.http.post<Eleve>(this.apiUrl, eleve);
+  create(data: FormData): Observable<Eleve> {
+    return this.http.post<Eleve>(this.apiUrl, data);
   }
 
-  updateEleve(id: number, eleve: Partial<Eleve>): Observable<Eleve> {
-    return this.http.put<Eleve>(`${this.apiUrl}/${id}`, eleve);
+
+  update(id: number, data: FormData): Observable<Eleve> {
+    return this.http.put<Eleve>(`${this.apiUrl}/${id}`, data);
   }
 
-  deleteEleve(id: number): Observable<any> {
+
+
+  delete(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
-
-
 }

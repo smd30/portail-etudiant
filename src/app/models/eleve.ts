@@ -1,11 +1,22 @@
-import {Classroom} from './classroom';
-import {User} from './user';
-
 export interface Eleve {
   id: number;
   user_id: number;
   classroom_id: number;
   matricule: string;
-  user?: User;
-  classroom?: Classroom;
+  user?: {
+    id: number;
+    nom: string;
+    prenom: string;
+    email: string;
+    telephone: string;
+    addresse: string;
+    date_naissance: string;
+    lieu: string;
+    sexe: 'M' | 'F';
+    justificatif_path?: string;
+  };
+  classroom?: {
+    id: number;
+    libelle: string;
+  };
 }

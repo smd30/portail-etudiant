@@ -10,7 +10,6 @@ import { authGuard } from './guards/auth-guard';
 import { UsersComponent } from './admin/users/users';
 import { ClassroomsComponent } from './admin/classrooms/classrooms';
 import { CoursComponent } from './admin/cours/cours';
-import {Eleves} from './admin/eleves/eleves';
 import {Bulletins} from './admin/bulletins/bulletins';
 import {Enseignants} from './admin/enseignants/enseignants';
 
@@ -31,7 +30,10 @@ export const routes: Routes = [
       { path: 'users', component: UsersComponent },
       { path: 'classes', component: ClassroomsComponent },
       { path: 'cours', component: CoursComponent },
-      { path: 'eleves', component: Eleves },
+      {
+        path: 'eleves',
+        loadComponent: () => import('./admin/eleves/eleves').then(m => m.Eleves)
+      },
       { path: 'enseignants', component: Enseignants },
       { path: 'bulletins', component: Bulletins },
     ],
